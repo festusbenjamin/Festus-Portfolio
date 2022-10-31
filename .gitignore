@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+backend-sanity/node_modules
+
 # production
 /build
 
