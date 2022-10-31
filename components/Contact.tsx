@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, MutableRefObject } from "react";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ContactsInfo } from "../typings";
-import emailjs from "@emailjs/browser";
+
 
 
 type Props = {
@@ -15,27 +14,14 @@ type Props = {
 export default function Contact({ contactsInfo }: Props) {
   const form = useRef()
   const submitData = () => {  
-    emailjs.sendForm('service_imdwxjd', 'template_031opjd', form.current, 'a44VY0bul68XOhtCa')
-      .then((result) => {
-        toast.success('Thankyou for contacting us!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-      }, (error) => {
-        toast.error(error.text, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
+    toast.success('Thankyou for contacting us!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
       });
   };
 
@@ -68,7 +54,6 @@ export default function Contact({ contactsInfo }: Props) {
 
         <form
           onSubmit={submitData}
-          ref={form}
           className="flex flex-col w-screen md:w-fit space-y-2 mx-auto"
         >
           <div className="flex flex-col md:flex-row md:space-x-2">
